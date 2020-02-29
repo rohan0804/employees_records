@@ -1,0 +1,29 @@
+<table class="table table-striped" style="border: 2px double rgb(0, 255, 213);background-color: beige">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Aadhar_Number</th>
+        <th scope="col">Gender</th>
+        <th scope="col">D.O.B</th>  
+        <th scope="col">actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%for(var i=0;i<data.length;i++){%>
+        <tr id="<%=data[i]._id%>">
+          <th scope="row"><%=data[i].id%></th>
+          <td><%=data[i].name%></td>
+          <td><%=data[i].email%></td>
+          <td><%=data[i].aadharnumber%></td>
+           <td><%=data[i].gender%></td>
+           <td><%=data[i].dob%></td>
+           <td>
+             <button style="background-color:#85dc35" onclick="deleterecord('<%=data[i]._id%>')"><i class="material-icons" style="background-color:#85dc35">delete_forever</i></button>
+             <button   data-toggle="modal" data-target="#exampleModalLong" style="background-color:aqua" onclick="updaterecord('<%=data[i]._id%>')"><i class="material-icons" style="background-color:aqua;border: none;">create</i></button>
+           </td>
+        </tr> 
+      <%}%>
+    </tbody>
+  </table>

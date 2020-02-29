@@ -1,0 +1,107 @@
+<form action="/admin/update" method="POST">
+    <div class="form-group">
+        <label for="update_user_id">Id:</label>
+        <input type="text" name="id" class="form-control" id="update_user_id">
+      </div>
+      <div class="form-group">
+        <label for="update_user_name">Name:</label>
+        <input type="text" class="form-control" id="update_user_name" name="name">
+      </div>
+    <div class="form-group">
+      <label for="update_user_email">Email address</label>
+      <input type="email" class="form-control" id="update_user_email" aria-describedby="emailHelp" name="email">
+      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    <div class="form-group">
+        <div class="form-group">
+            <label>country</label>
+            <select class="form-control" id="update_user_country" name="country">
+              <option>india</option>
+              <option>u.s.a</option>
+              <option>pakistan</option>
+            </select>
+        </div>
+            <div class="form-group">
+                <label for="update_user_state">state</label>
+                <select class="form-control" id="update_user_state" name="state">
+                  <option>haryana</option>
+                  <option>punjab</option>
+                </select>
+              </div>
+            <div class="form-group">
+                <label for="update_user_city">city</label>
+                <input type="text" class="form-control" id="update_user_city" name="city" placeholder="enter your city">
+            </div>
+            <div class="form-group">
+                <label for="update_user_town">Town</label>
+                <input type="text" class="form-control" id="update_user_town" placeholder="enter your Town" name="town">
+            </div>
+            <div class="form-group">
+                <label for="update_user_street">street</label>
+                <input type="text" class="form-control" id="update_user_street" placeholder="enter your street name" name="street">
+            </div>
+            <div class="form-group">
+                <label for="update_user_aadharnumber">Aadhar_Number</label>
+                <input type="password" class="form-control" id="update_user_aadharnumber" placeholder="enter your Aadhar_Number" name="aadharnumber">
+            </div>
+            <div class="form-group">
+                <label>Gender</label>
+             </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="gender" id="update_user_gender_male" value="male">
+                <label class="form-check-label form-control" for="update_user_gender_male">Male</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="gender" id="update_user_gender_female" value="female">
+                <label class="form-check-label form-control" for="update_user_gender_female">female</label>
+              </div>
+              <div class="form-group" style="margin-top: 10px;">
+                <label>D.O.B</label>
+             </div>
+              <div class="form-row align-items-center">
+                <div class="col-auto my-1">
+                  <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">D.O.B</label>
+                  <select class="custom-select mr-sm-2" id="update_user_birth_year" name="year">
+                    <option selected>year...</option>
+                    <option value="1999">1999</option>
+                    <option value="2000">2000</option>
+                    <option value="2001">2001</option>
+                  </select>
+                </div>
+                <div class="col-auto my-1">
+                    <select class="custom-select mr-sm-2" id="update_user_birth_month" name="month">
+                      <option selected>month...</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="6">6</option>
+                      <option value="7">7</option>
+                    </select>
+                  </div>
+                  <div class="col-auto my-1">
+                    <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">D.O.B</label>
+                    <select class="custom-select mr-sm-2" id="update_user_birth_date" name="date">
+                      <option selected>date...</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="6">6</option>
+                      <option value="7">7</option>
+                      <option value="8">8</option>
+                      <option value="9">9</option>
+                      <option value="10">10</option>
+                      <option value="11">11</option>
+                    </select>
+                  </div>
+        </div>
+</div>
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+<button type="submit" name="submit"class="btn btn-primary">Update</button>
+<input type="text" id="document_id" name='doc_id' style="display:none;">
+</form>
