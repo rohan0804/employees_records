@@ -36,7 +36,7 @@ exports.postdeleteEmployee=(req, res) => {
     console.log(req.body.id);
     employee.findByIdAndDelete({ _id: req.body.id })
         .then(data => {
-            //console.log(data);
+            console.log(data);
             console.log('record deleted successfully');
             res.send('success');
         })
