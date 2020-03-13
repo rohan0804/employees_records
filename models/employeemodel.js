@@ -10,6 +10,7 @@ const register_employee = new schema({
         type: String,
         required: true
     },
+    // imgurl:{type:String},
     email: String,
     address: {
         country: { type: String, default: 'india' },
@@ -22,7 +23,9 @@ const register_employee = new schema({
     },
     aadharnumber: { type: Number, required: true },
     gender: String,
-    dob: String
-});
+    dob: String,
+    // imgurl:{type:String}
+},{strict: false});
+register_employee.add({imgurl:String});
 const add_employee = mongoose.model('add_employee', register_employee);
 module.exports = add_employee;

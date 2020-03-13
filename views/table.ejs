@@ -12,8 +12,8 @@
     </thead>
     <tbody>
       <%for(var i=0;i<data.length;i++){%>
-        <tr id="<%=data[i]._id%>">
-          <th scope="row"><%=data[i].id%></th>
+          <tr>
+          <td><img src="/<%=data[i].imgurl%>" alt="image" style="height: 73px;width: 80px;border-radius: 36px;"></td>
           <td><%=data[i].name%></td>
           <td><%=data[i].email%></td>
           <td><%=data[i].aadharnumber%></td>

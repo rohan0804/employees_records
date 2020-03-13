@@ -1,4 +1,5 @@
 console.log(status);
+// console.log(<%=data%>);
 function deleterecord(id) {
    $('#' + id).hide();
    $.post('/admin/deleterecord', { id: id }, (data) => {
@@ -14,6 +15,8 @@ function updaterecord(data) {
       let dob = responsedata.dob;
       // console.log(typeof(dob));
       let arr = dob.split('/');
+      let imagearr=responsedata.imgurl.split('-');
+      console.log(imagearr);
       let gender = responsedata.gender;
       if (gender == 'female') {
          let radiobtn = document.getElementById("update_user_gender_female");
@@ -23,7 +26,7 @@ function updaterecord(data) {
          let radiobtn = document.getElementById("update_user_gender_male");
          radiobtn.checked = true;
       }
-      console.log(arr);
+      // console.log(arr);
       document.getElementById('update_user_id').value = responsedata.id;
       document.getElementById('update_user_name').value = responsedata.name;
       document.getElementById('update_user_email').value = responsedata.email;
@@ -37,6 +40,7 @@ function updaterecord(data) {
       document.getElementById('update_user_birth_month').value = arr[1];
       document.getElementById('update_user_birth_date').value = arr[2];
       document.getElementById('document_id').value = responsedata._id;
+      // document.getElementById('update_user_image'). = imagearr[3];
    });
 }
 let searchParams = new URLSearchParams(window.location.search);
