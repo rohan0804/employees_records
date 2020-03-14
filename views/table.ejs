@@ -1,29 +1,64 @@
 <table class="table table-striped" style="border: 2px double rgb(0, 255, 213);background-color: beige">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Name</th>
-        <th scope="col">Email</th>
-        <th scope="col">Aadhar_Number</th>
-        <th scope="col">Gender</th>
-        <th scope="col">D.O.B</th>  
-        <th scope="col">actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <%for(var i=0;i<data.length;i++){%>
-          <tr>
-          <td><img src="/<%=data[i].imgurl%>" alt="image" style="height: 73px;width: 80px;border-radius: 36px;"></td>
-          <td><%=data[i].name%></td>
-          <td><%=data[i].email%></td>
-          <td><%=data[i].aadharnumber%></td>
-           <td><%=data[i].gender%></td>
-           <td><%=data[i].dob%></td>
-           <td>
-             <button style="background-color:#85dc35" onclick="deleterecord('<%=data[i]._id%>')"><i class="material-icons" style="background-color:#85dc35">delete_forever</i></button>
-             <button   data-toggle="modal" data-target="#exampleModalLong" style="background-color:aqua" onclick="updaterecord('<%=data[i]._id%>')"><i class="material-icons" style="background-color:aqua;border: none;">create</i></button>
-           </td>
-        </tr> 
-      <%}%>
+  <thead>
+    <tr>
+      <th scope="col">Profile</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Aadhar_Number</th>
+      <th scope="col">Gender</th>
+      <th scope="col">D.O.B</th>
+      <th scope="col">actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%for(var i=0;i < data.length;i++){%>
+    <tr>
+      <td><img src="/<%=data[i].imgurl%>" alt="image" style="height: 73px;width: 80px;border-radius: 36px;"></td>
+      <td><%=data[i].name%></td>
+      <td><%=data[i].email%></td>
+      <td><%=data[i].aadharnumber%></td>
+      <td><%=data[i].gender%></td>
+      <td><%=data[i].dob%></td>
+      <td>
+        <button style="background-color:#85dc35" onclick="deleterecord('<%=data[i]._id%>')"><i
+            class="material-icons">delete_forever</i></button>
+        <button data-toggle="modal" data-target="#exampleModalLong" style="background-color:aqua;position: relative;
+        left: 2px;" onclick="updaterecord('<%=data[i]._id%>')"><i class="material-icons"
+            style="background-color:aqua;border: none;">create</i></button>
+        <button style="position: relative;
+             left: 4px;
+             top: -3px;font-size: 1px;" type="button" class="btn btn-primary" data-toggle="modal"
+          data-target="#mailmodel" onclick="sendmailrequest('<%=data[i]._id%>')">
+          <i class="material-icons">email</i>
+        </button>
+      </td>
+    </tr>
+    <%}%>
     </tbody>
   </table>
+  <div class="modal fade" id="mailmodel" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Email</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="form-group">
+                <label for="mailtext">Enter text</label>
+                <textarea class="form-control" name="mailtext" id="mailtext" rows="3"></textarea>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal"> <i class="material-icons">clear</i>
+               </button>
+              <button type="button" class="btn btn-primary" id="send_mail_btn">
+          <i class="material-icons">send</i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>

@@ -13,4 +13,6 @@ router.post('/getdata', employeeController.post_get_data_of_Employee);
 
 router.post('/update', employeeController.updateEmployee);
 
+router.post('/sendmail',employeeController.sendmail);
+
 module.exports = router;

@@ -1,4 +1,6 @@
 const employee = require('../models/employeemodel');
+const nodemailer = require('nodemailer');
+
 exports.getallEmployee = (req, res) => {
     employee.find()
         .then(data => {
@@ -43,7 +45,7 @@ exports.postaddEmployee = (req, res) => {
     //console.log(req);
 }
 exports.postdeleteEmployee = (req, res) => {
-    // console.log(req.body.id);
+    console.log(req.body.id);
     employee.findByIdAndDelete({ _id: req.body.id })
         .then(data => {
             // console.log(data);
@@ -76,11 +78,53 @@ exports.updateEmployee = (req, res) => {
         aadharnumber: data.aadharnumber,
         dob: calculated_dob,
         gender: data.gender,
-        imgurl:imgurl
+        imgurl: imgurl
     }, { new: true })
         .then(res => {
             console.log('record updated successfully!');
         })
         .catch(err => console.log(err))
     res.redirect('/?status=success');
+}
+
+exports.sendmail = (req, res, next) => {
+    const id = req.body.id;
+    // console.log(req.body);
+    const mailtext = req.body.mailtext;
+    const text = req.body.text;
+    // console.log(id);
+    // console.log(text);
+    employee.findById(id)
+        .then(data => {
+            // console.log(data);
+            const email = data.email;
+            const name = data.name;
+            let fun=require('../mail/mailoptions');
+             mailOptions=fun(email,text);
+            const transporter = nodemailer.createTransport({
+                service: 'gmail',
+                secure: true,
+                auth: {
+                    user: "rohanshrivastav1999@gmail.com",
+                    pass: 'rohan0804'
+                }
+            });
+            transporter.sendMail(mailOptions, (err, info) => {
+                if (err) {
+                    console.log(err);
+                    res.send('failed');
+                }
+                else {
+                    let obj = {
+                        status: 'success',
+                        name: name
+                    }
+                    // console.log(obj);
+                    console.log(info.response);
+                    console.log('mail send successfullly');
+                    // res.send('success');
+                    res.send(obj);
+                }
+            })
+        })
 }

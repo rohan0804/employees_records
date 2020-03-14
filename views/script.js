@@ -1,12 +1,16 @@
-console.log(status);
-// console.log(<%=data%>);
 function deleterecord(id) {
+   console.log(id);
    $('#' + id).hide();
    $.post('/admin/deleterecord', { id: id }, (data) => {
       if (data == 'success') {
-         notie.alert({ position: "bottom", time: 5, type: "success", text: "Account deleted Sucessfully" });
+         notie.alert({ position: "bottom", time: 3, type: "success", text: "Account deleted Sucessfully" });    
+         setTimeout(() => {
+            window.location.href = 'http://localhost:2500/';
+         }, 2000);
       }
    });
+
+
 }
 function updaterecord(data) {
    //console.log(data);
@@ -15,7 +19,7 @@ function updaterecord(data) {
       let dob = responsedata.dob;
       // console.log(typeof(dob));
       let arr = dob.split('/');
-      let imagearr=responsedata.imgurl.split('-');
+      let imagearr = responsedata.imgurl.split('-');
       console.log(imagearr);
       let gender = responsedata.gender;
       if (gender == 'female') {
@@ -40,20 +44,32 @@ function updaterecord(data) {
       document.getElementById('update_user_birth_month').value = arr[1];
       document.getElementById('update_user_birth_date').value = arr[2];
       document.getElementById('document_id').value = responsedata._id;
-      // document.getElementById('update_user_image'). = imagearr[3];
    });
 }
 let searchParams = new URLSearchParams(window.location.search);
-console.log(searchParams);
-console.log(searchParams.has('status'));
 let param = searchParams.get('status');
-console.log(param);
 if (param == 'success') {
    notie.alert({ position: "bottom", time: 3, type: "success", text: "Account updated Sucessfully" });
-   // param = '';
-   // searchParams.delete('status');
-   // console.log(searchParams.has('status'));
    setTimeout(() => {
       window.location.href = 'http://localhost:2500/';
    }, 1000);
+}
+
+function sendmailrequest(id) {
+   console.log(id);
+   let btn = document.getElementById('send_mail_btn');
+   btn.addEventListener('click', () => {
+      // $('#mailmodel').modal('hide');
+      let text = document.getElementById('mailtext').value;
+      console.log(text);
+      $.post('/admin/sendmail', { id,text }, (responsedata) => {
+         // console.log(responsedata);
+         if (responsedata.status == 'success') {
+            notie.alert({ position: "bottom", time: 3, type: "success", text: `Mail send successfully to ${responsedata.name}`});
+         }
+         else {
+            console.log(responsedata);
+         }
+      });
+   });
 }
